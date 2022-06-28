@@ -1,0 +1,63 @@
+Задача №1
+url=input()
+s = url.find('/')
+if s != -1:
+    if url[s+2]!="w":
+        dot = url.find('.')
+        t = url[(s+2):(dot)]
+        print(t)
+    else:
+        q= url[(s+6):]
+        dot = q.find('.')
+        t = q[:(dot)]
+        print(t)
+else:
+    q=url[4:]
+    dot = q.find('.')
+    t = q[:(dot)]
+    print(t)
+
+
+Задача №3
+n=int(input())
+k=1
+for i in range(2, n+1):
+    k *= i
+k = str(k)
+t = k.count('0')
+print(t)
+
+
+Задача №5 
+def get_prime_factors(n):
+    factors = list()
+    divisor = 2
+    while divisor <= n:
+        if n%divisor==0:
+            factors.append(divisor)
+            n = n/divisor
+        else:
+            divisor+=1
+    return factors
+print('primesL = ', end=' ')
+qc= input().split()
+ss=[]
+for k in range(len(qc)):
+  ss.append(int(qc[k]))
+ss=set(ss)
+print('limit = ', end=' ')
+a = int(input())
+dd = {}
+for i in range(2, a+1):
+    c = get_prime_factors(i)
+    c = set(c)
+    dd.update({i: c})
+c = 0
+dd2 = {}
+max = 0
+for j in range(2, a+1):
+    if ss == dd.get(j):
+      dd2.update({j: dd.get(j)})
+      max = j
+      c += 1
+print(max, c)
